@@ -44,12 +44,12 @@ variable "ip_range_services" {
 
 variable "machine_type" {
   description = "Type of node to use to run the cluster"
-  default     = "n1-standard-2"
+  default     = "n1-standard-1"
 }
 
 variable "gke_kubernetes_version" {
   description = "Kubernetes version to deploy Masters and Nodes with"
-  default     = "1.14"
+  default     = "1.17"
 }
 
 variable "minimum_node_pool_instances" {

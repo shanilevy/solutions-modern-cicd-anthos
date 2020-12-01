@@ -17,7 +17,6 @@
 module "mci" {
   source  = "terraform-google-modules/gcloud/google"
   version = "~> 2.0"
-  
   platform           = "linux"
   upgrade            = true
   module_depends_on  = [var.wait]

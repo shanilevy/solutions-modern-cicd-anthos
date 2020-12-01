@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.17.0"
-  project = var.project_id
-}
 
 resource "google_compute_network" "anthos-platform" {
   name                    = "anthos-platform"
   auto_create_subnetworks = false
-  depends_on              = [module.project-services.project_id]
+  project                 = var.project_id ### updated
 }
 
 resource "google_compute_subnetwork" "anthos-platform-central1" {
   name          = "anthos-platform-central1"
+  project       = var.project_id ### updated
   ip_cidr_range = "10.2.0.0/16"
   region        = "us-central1"
   network       = google_compute_network.anthos-platform.self_link
@@ -43,6 +40,7 @@ resource "google_compute_subnetwork" "anthos-platform-central1" {
 
 resource "google_compute_subnetwork" "anthos-platform-east1" {
   name          = "anthos-platform-east1"
+  project       = var.project_id ### updated
   ip_cidr_range = "10.3.0.0/16"
   region        = "us-east1"
   network       = google_compute_network.anthos-platform.self_link
@@ -58,6 +56,7 @@ resource "google_compute_subnetwork" "anthos-platform-east1" {
 
 resource "google_compute_subnetwork" "anthos-platform-west1" {
   name          = "anthos-platform-west1"
+  project       = var.project_id ### updated
   ip_cidr_range = "10.4.0.0/16"
   region        = "us-west1"
   network       = google_compute_network.anthos-platform.self_link
@@ -74,6 +73,7 @@ resource "google_compute_subnetwork" "anthos-platform-west1" {
 
 resource "google_compute_subnetwork" "anthos-platform-west2" {
   name          = "anthos-platform-west2"
+  project       = var.project_id ### updated
   ip_cidr_range = "10.5.0.0/16"
   region        = "us-west2"
   network       = google_compute_network.anthos-platform.self_link

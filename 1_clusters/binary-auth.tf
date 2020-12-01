@@ -72,8 +72,9 @@ locals {
 
 # APIs required for Binary Authorization
 module "project-services" {
-  source  = "terraform-google-modules/project-factory/google//modules/project_services"
-  version = "~> 8.0"
+  source  = "terraform-google-modules/project-factory/google//modules/project_services" ### updated
+  version = "~> 9.2.0" ### Updated
+
 
   project_id = var.project_id
 
@@ -154,13 +155,13 @@ resource "google_binary_authorization_policy" "policy" {
     ]
   }
   # Development Environment, Build Quality Attestion only, non-authorative
-  cluster_admission_rules {
-    cluster          = "${module.anthos-platform-dev.region}.${module.anthos-platform-dev.cluster-name}"
-    evaluation_mode  = "REQUIRE_ATTESTATION"
-    enforcement_mode = "DRYRUN_AUDIT_LOG_ONLY"
-    require_attestations_by = [
-      module.build-attestor.attestor
-    ]
-  }
+  #cluster_admission_rules {
+  #  cluster          = "${module.anthos-platform-dev.region}.${module.anthos-platform-dev.cluster-name}"
+  #  evaluation_mode  = "REQUIRE_ATTESTATION"
+  #  enforcement_mode = "DRYRUN_AUDIT_LOG_ONLY"
+  #  require_attestations_by = [
+  #    module.build-attestor.attestor
+  #  ]
+  #}
 
 }

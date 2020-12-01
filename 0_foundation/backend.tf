@@ -16,7 +16,8 @@
 
 terraform {
   backend "gcs" {
-    bucket = "YOUR_PROJECT_ID-anthos-platform-tf-state"
+    bucket = "shanisl-anthos-platform-tf-state"
     prefix = "foundation"
+    credentials = "terraform-admin.json"
   }
 }
